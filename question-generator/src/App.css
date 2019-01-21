@@ -30,3 +30,22 @@
     transform: rotate(360deg);
   }
 }
+
+#card {
+  width: auto;
+}
+
+.ui.menu {
+  border: 0px;
+    box-shadow: none;
+    border-radius: 0px;
+}
+
+#iconrupee{
+  font-size: 60px;
+  color: gold;
+}
+
+#nav{
+  height: 100px;
+}

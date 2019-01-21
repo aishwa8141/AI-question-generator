@@ -2,9 +2,10 @@ import React, { Component } from "react";
 import Autosuggest from "react-autosuggest";
 import "../css/search.css";
 import axios from "axios";
+import Content from "./content";
+import ReactDOM from "react-dom";
 
 const API_URL = "http://localhost:3002/search";
-
 const getSuggestionValue = suggestion => suggestion.name;
 function renderSuggestion(suggestion) {
   return <span>{suggestion.name}</span>;
@@ -24,11 +25,6 @@ const renderInputComponent = inputProps => (
   </div>
 );
 
-// const renderInputComponent = inputProps => (
-//   <div>
-//     <input id="my-custom-input" {...inputProps} />
-//   </div>
-// );
 export default class Search extends Component {
   constructor() {
     super();
@@ -56,7 +52,6 @@ export default class Search extends Component {
   }
   searchByName = () => {
     console.log("searching");
-
     axios
       .get(`http://localhost:3002/${this.state.searchValue}`)
       .then(res => {
@@ -68,8 +63,8 @@ export default class Search extends Component {
       .catch(err => {
         console.log("Error retreiving Info");
       });
+    this.displayContent();
   };
-
   getSuggestions(value) {
     const inputValue = value.trim().toLowerCase();
     const inputLength = inputValue.length;
@@ -80,7 +75,6 @@ export default class Search extends Component {
           lang => lang.name.toLowerCase().slice(0, inputLength) === inputValue
         );
   }
-
   onChange = (event, { newValue }) => {
     console.log("omsj", newValue);
     this.setState({
@@ -103,18 +97,11 @@ export default class Search extends Component {
     this.setState({ searchValue: suggestionValue });
     this.searchByName();
   };
-  // storeAutosuggestReference = autosuggest => {
-  //   console.log('ausyai', autosuggest)
-  //   if (autosuggest !== null) {
-  //     this.input = autosuggest.input.value;
-  //     console.log('this.input',this.input.value)
-  //   }
-  // };
-
+  displayContent = () => {
+    ReactDOM.render(<Content />, document.getElementById("content"));
+  };
   render() {
     const { value, suggestions } = this.state;
-
-    // Autosuggest will pass through all these props to the input.
     const inputProps = {
       placeholder: "Search",
       value,
@@ -137,6 +124,7 @@ export default class Search extends Component {
             />
           </div>
         </div>
+        <div id="content" />
       </div>
     );
   }

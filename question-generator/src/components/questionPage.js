@@ -1,19 +1,25 @@
 import React ,{ Component ,Fragment } from  'react';
 import Search from '../components/search';
-import Content from '../components/content';
 import '../css/router.css';
 export class questionPage extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+          url: this.props.location.state.profile,
+          name: this.props.location.state.name
+        };
+      }
     render() {
         return(
             <Fragment>
   <div className="ui inverted menu" id="nav">
         <div className="ui container">
           <a href="/" className="header item">
-          <img src="https://photos.gograph.com/thumbs/CSP/CSP201/default-avatar-profile-icon-vector-art_k52979245.jpg" alt="no"/>
+          <img src={this.state.url} alt="no"/>
           </a>
          
             <div className="ui two wide column center aligned ">
-              <h2>AI Question Generator</h2>
+              <h3>AI Question Generator</h3>
             </div>
          
           <div className="right menu">
@@ -27,7 +33,7 @@ export class questionPage extends Component {
 <div >
 <Search></Search>
 </div>
-<Content></Content>
+
      </Fragment>
         )
     }

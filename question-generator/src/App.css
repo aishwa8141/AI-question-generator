@@ -49,3 +49,6 @@
 #nav{
   height: 100px;
 }
+#nav a img{
+  width: 4rem;
+ }

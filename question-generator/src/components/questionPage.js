@@ -2,20 +2,14 @@ import React ,{ Component ,Fragment } from  'react';
 import Search from '../components/search';
 import '../css/router.css';
 export class questionPage extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-          url: this.props.location.state.profile,
-          name: this.props.location.state.name
-        };
-      }
+   
     render() {
         return(
             <Fragment>
   <div className="ui inverted menu" id="nav">
         <div className="ui container">
           <a href="/" className="header item">
-          <img src={this.state.url} alt="no"/>
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwox3z8V2KaTNnOuDYxxegse0JZZhvfrJBBIKFZf_6JzXIC6du" alt="no"/>
           </a>
          
             <div className="ui two wide column center aligned ">

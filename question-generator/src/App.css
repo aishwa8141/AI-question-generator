@@ -53,3 +53,7 @@
   width: 6rem !important;
   height: 73px;
  }
+ #text{
+  text-align: -webkit-auto;
+  margin-top: 2rem;
+ }

@@ -1,31 +1,26 @@
 import React, { Component, Fragment } from "react";
 import Cards from "./card";
-import ReactDOM from 'react-dom';
-
-
-
-
 export default class Content extends Component {
     state = {
         questions: [
            { id: 'fdsd', title: 'Why is the sky blue?' },
            { id: 'adsf', title: 'Who invented pizza?' },
            { id: 'afdsf', title: 'Is green tea overrated?' },
-        ]
+        ],
+        displayCard :false
    }
    
    displayQuestion = () => {
-    // this.setState({
-    //     displayQuestions: !this.state.displayQuestions
-    // })
-    ReactDOM.render(<Cards questions={this.state.questions[0]}/>,document.getElementById('ques'));
+    this.setState({
+        displayCard:true
+      })
 }
 
   render() {
 
     return (
         <Fragment>
-      <div className="ui raised very padded text container segment">
+      <div className="ui raised very padded text container segment description">
         <h2 className="ui header">Dogs Roles with Humans</h2>
         <p>
           Domestic dogs inherited complex behaviors, such as bite inhibition,
@@ -50,6 +45,7 @@ export default class Content extends Component {
           Generate questions
         </button>
       </div>
+      {this.state.displayCard === true? <Cards questions={this.state.questions[0]}/>: "There are no questions"}
 
       <div id="ques"></div>
       </Fragment>

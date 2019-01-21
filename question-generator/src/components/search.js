@@ -11,18 +11,10 @@ function renderSuggestion(suggestion) {
   return <span>{suggestion.name}</span>;
 }
 const renderInputComponent = inputProps => (
-  <div className="ui category search">
-    <div className="ui icon input">
-      <input
-        className="prompt"
-        type="text"
-        placeholder="Search"
-        {...inputProps}
-      />
-      <i className="search icon" />
-    </div>
-    <div className="results" />
-  </div>
+  <div className="ui fluid icon input">
+  <input type="text" placeholder="Search a very wide input..."   {...inputProps}/>
+  <i className="search icon"></i>
+ </div>
 );
 
 export default class Search extends Component {

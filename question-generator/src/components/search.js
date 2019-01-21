@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import Autosuggest from 'react-autosuggest'
 import '../css/search.css'
 import axios from 'axios'
+import Content from './content';
+import ReactDOM from 'react-dom';
+
 
 const { API_KEY } = process.env
 const API_URL='http://localhost:3002/search'
@@ -14,6 +17,7 @@ function renderSuggestion(suggestion) {
   );
   }
   const renderInputComponent = inputProps => (
+    
     <div className="ui category search">
     <div className="ui icon input">
       <input className="prompt" type="text" placeholder="Search" {...inputProps}/>
@@ -66,6 +70,7 @@ export default class Search extends Component {
       }).catch(err => {
         console.log("Error retreiving Info");
       });
+      this.displayContent();
   }
 
   getSuggestions(value) {
@@ -107,7 +112,10 @@ export default class Search extends Component {
   //     console.log('this.input',this.input.value)
   //   }
   // };
-
+  displayContent = () => {
+   
+    ReactDOM.render(<Content/>,document.getElementById('content'));
+}
   render() {
     const { value, suggestions } = this.state;
  
@@ -132,6 +140,7 @@ export default class Search extends Component {
       /></div>
         
       </div>
+      <div id="content"></div>
      
       </div>
     );

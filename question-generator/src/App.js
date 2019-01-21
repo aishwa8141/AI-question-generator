@@ -13,7 +13,7 @@ class App extends Component {
 <div >
 <Search></Search>
 </div>
-<Content></Content>
+{/* <Content></Content> */}
      </Fragment>
     );
   }

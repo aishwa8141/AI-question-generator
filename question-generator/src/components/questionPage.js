@@ -1,32 +1,53 @@
 import React ,{ Component ,Fragment } from  'react';
 import Search from '../components/search';
 import '../css/router.css';
+import { Image, Menu,Dropdown,Icon} from 'semantic-ui-react';
+import { Redirect } from 'react-router';
 export class questionPage extends Component {
-   
+  constructor(props) {
+    super(props);
+    this.state = {
+      credits: 0,
+      signOut: false,
+    };
+  }
+  handleSignOut = () =>{
+    console.log("User Signed Out")
+    sessionStorage.clear();
+    this.setState({
+    signOut: true,
+    })
+  }
     render() {
+      const trigger = (
+        <span>
+          <Image avatar src={sessionStorage.getItem("userProfileImage")} />
+        </span>
+      ) 
+  
         return(
             <Fragment>
-  <div className="ui inverted menu" id="nav">
-        <div className="ui container">
-          <a href="/" className="header item">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwox3z8V2KaTNnOuDYxxegse0JZZhvfrJBBIKFZf_6JzXIC6du" alt="no"/>
-          </a>
-         
-            <div className="ui two wide column center aligned ">
-              <h3>AI Question Generator</h3>
-            </div>
-         
-          <div className="right menu">
-    <div className="ui right aligned">
-         
-          <i className="rupee sign icon right-floated" id="iconrupee"></i>
+   <div>
+      {(this.state.signOut)? <Redirect to="/"/>:
+        <Menu inverted>
+          <Menu.Item>
+            <Image size="mini" 
+              src="https://cdn2.iconfinder.com/data/icons/world-currencies-gold/512/indian_rupee_sign_currency_gold_symbol-512.png" 
+              verticalAlign='middle' />
+            <span>{(this.props.credits==null)?0:this.props.credits}</span>
+          </Menu.Item>
+          <Menu.Item position='right' >
+          <Dropdown trigger={trigger} pointing='top right' icon={null}>
+          <Dropdown.Menu>
+            <Dropdown.Header>{sessionStorage.getItem("userName")}</Dropdown.Header>
+            <Dropdown.Item onClick={this.handleSignOut}><Icon name='sign out' />Sign Out</Dropdown.Item>
+          </Dropdown.Menu>
+        </Dropdown>
+          </Menu.Item>
+        </Menu>}
         </div>
-        </div>
-        </div>
-      </div>
-<div >
 <Search></Search>
-</div>
+
 
      </Fragment>
         )

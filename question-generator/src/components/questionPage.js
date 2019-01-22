@@ -26,8 +26,8 @@ export class questionPage extends Component {
       ) 
   
         return(
-            <Fragment>
-   <div>
+            <Fragment >
+   <div id="frg"> 
       {(this.state.signOut)? <Redirect to="/"/>:
         <Menu inverted>
           <Menu.Item>

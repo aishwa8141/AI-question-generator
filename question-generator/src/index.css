@@ -31,3 +31,10 @@ code {
 .suggestionsContainer { }
 .suggestion {}
 .suggestionHighlighted { }
+  /* #root{
+    background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnwBypvLqmluAwRIR2SaUzrCJ1ny3TXGUvU6cp0xeMv89VmmqbZg);
+    background-repeat: no-repeat;
+    height: 100%;
+    width: 100%;
+    background-size: cover;
+  } */

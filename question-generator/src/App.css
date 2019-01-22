@@ -57,3 +57,11 @@
   text-align: -webkit-auto;
   margin-top: 2rem;
  }
+#border {
+  border: solid;
+  margin-top: 6rem;
+}
+
+#bordersize{
+  width: 30rem;
+}

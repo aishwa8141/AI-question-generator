@@ -1,7 +1,15 @@
 #nav{
+    width: -webkit-fill-available;
     background-color: black;
-    /* width: 0rem ; */
 }
-h2{
+#textdec{
     color: white;
+    margin-top: 1rem;
+}
+@media only screen and (max-width: 767px)
+{
+    #nav{
+        width: -webkit-fill-available;
+        background-color: black;
+    }
 }

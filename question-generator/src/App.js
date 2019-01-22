@@ -1,81 +1,79 @@
 import React, { Component, Fragment } from 'react';
 import './App.css';
 import Navbar from './components/navbar';
-import axios from "axios";
-import './css/login.css';;
-
-
+// import axios from "axios";
+import './css/login.css';
+import {Link} from 'react-router-dom';
 class App extends Component {
   state = {
     users: [],
    
   };
-  componentDidMount() {
+  // componentDidMount() {
    
-    axios.get("http://localhost:3002/users").then(user => {
-      this.setState({
-        users: user.data
+  //   axios.get("http://localhost:3002/users").then(user => {
+  //     this.setState({
+  //       users: user.data
         
-      });
-    });
-  }
-  CreateNewUser(event) {
-    event.preventDefault();
-    const newUser = {
-      name: this.state.newName,
-      password: this.state.newPassword,
-      profile: this.state.newProfile
-    };
+  //     });
+  //   });
+  // }
+  // CreateNewUser(event) {
+  //   event.preventDefault();
+  //   const newUser = {
+  //     name: this.state.newName,
+  //     password: this.state.newPassword,
+  //     profile: this.state.newProfile
+  //   };
    
-    console.log("new", newUser);
-    axios
-      .post("http://localhost:3002/users", newUser)
-      .then(user => {
-        console.log(user);
-        this.props.history.push({
-          pathname: '/home',
-          state: {name : this.state.newName ,
-                  profile:this.state.newProfile}
-      });
-        const userList = this.state.users;
-        const newUserList = [...userList, user.data];
-        this.setState({
-          users: newUserList,
-          newName: "",
-          newPassword: "",
-          newProfile:""
-        });
-      })
-      .catch(err => console.log(err));
-  }
-  nameAdded(event) {
-    event.preventDefault();
-    this.setState({
-      newName: event.target.value
-    });
-  }
-  passwordAdded(event) {
-    event.preventDefault();
-    this.setState({
-      newPassword: event.target.value
-    });
-  }
-  profileAdded(event) {
-    event.preventDefault();
-    this.setState({
-      newProfile: event.target.value
-    })
-  }
+  //   console.log("new", newUser);
+  //   axios
+  //     .post("http://localhost:3002/users", newUser)
+  //     .then(user => {
+  //       console.log(user);
+  //       this.props.history.push({
+  //         pathname: '/home',
+  //     });
+  //       const userList = this.state.users;
+  //       const newUserList = [...userList, user.data];
+  //       this.setState({
+  //         users: newUserList,
+  //         newName: "",
+  //         newPassword: "",
+  //         newProfile:""
+  //       });
+  //     })
+  //     .catch(err => console.log(err));
+      
+  // }
+  // nameAdded(event) {
+  //   event.preventDefault();
+  //   this.setState({
+  //     newName: event.target.value
+  //   });
+  // }
+  // passwordAdded(event) {
+  //   event.preventDefault();
+  //   this.setState({
+  //     newPassword: event.target.value
+  //   });
+  // }
+  // profileAdded(event) {
+  //   event.preventDefault();
+  //   this.setState({
+  //     newProfile: event.target.value
+  //   })
+  // }
   render() {
     return (
       <Fragment>
       <Navbar></Navbar>
       
-         <div className="ui container"> 
-        <div className="ui grid">
-  <div className="eight wide column" > <form
+         <div className="ui container" id="bordersize"> 
+        <div className="ui grid" id="border">
+  <div className=" wide column" > <form
                   className="ui form"
-                  onSubmit={this.CreateNewUser.bind(this)}
+                  // onSubmit={this.CreateNewUser.bind(this)}
                 >
                   <div className="ui three column centered grid">
                     <div className="inline field">
@@ -84,28 +82,14 @@ class App extends Component {
                         <input
                           type="text"
                           placeholder="email"
-                          onChange={this.nameAdded.bind(this)}
-                          value={this.state.newName || ""}
+                          // onChange={this.nameAdded.bind(this)}
+                          // value={this.state.newName || ""}
                         />
                         <i className="user icon" />
                       </div>
                     </div>
                   </div>
-                  <div className="ui three column centered grid">
-                    <div className="inline field">
-                      <label>Profile Url</label>
-                      <div className="ui left icon input">
-                        <input
-                          type="text"
-                          placeholder="profile"
-                          onChange={this.profileAdded.bind(this)}
-                          value={this.state.newProfile || ""}
-                        />
-                        <i className="user icon" />
-                      </div>
-                    </div>
-                  </div>
-
+                
                   <div className="ui three column centered grid">
                     <div className="inline field">
                       <label>Password</label>
@@ -113,8 +97,8 @@ class App extends Component {
                         <input
                           type="password"
                           placeholder="password"
-                          onChange={this.passwordAdded.bind(this)}
-                          value={this.state.newPassword || ""}
+                          // onChange={this.passwordAdded.bind(this)}
+                          // value={this.state.newPassword || ""}
                         />
                         <i className="lock icon" />
                       </div>
@@ -122,20 +106,24 @@ class App extends Component {
                   </div>
 
                   <div className="ui two column centered grid" >
-                    <button className="ui primary button" type="submit"id="button" >
+                   <Link to="/home"> <button className="ui primary button" type="submit"id="button" >
                       Login
-                    </button>
+                    </button></Link>
                   </div>
+                 
                 </form>
                 </div>
-                <div className="one wide column"><div className="ui vertical divider">Or</div></div>
+                {/* <div className="one wide column">
+                <div className="ui vertical divider">Or
+                </div>
+                </div>
   <div className="five wide column"><div className="middle aligned column">
                 <div className="ui big button" id="btn">
                   <i className="signup icon" />
                   Sign Up
                 </div>
               </div>
-            </div>
+            </div> */}
            
           </div>
          

@@ -1,20 +1,25 @@
 import React, { Component } from "react";
 import Autosuggest from "react-autosuggest";
 import "../css/search.css";
+import"../css/router.css";
 import axios from "axios";
 import Content from "./content";
 import ReactDOM from "react-dom";
-
 const API_URL = "http://localhost:3002/search";
 const getSuggestionValue = suggestion => suggestion.name;
+
 function renderSuggestion(suggestion) {
   return <span>{suggestion.name}</span>;
 }
 const renderInputComponent = inputProps => (
   <div className="ui fluid icon input">
-  <input type="text" placeholder="Search a very wide input..."   {...inputProps}/>
-  <i className="search icon"></i>
- </div>
+    <input
+      type="text"
+      placeholder="Search a very wide input..."
+      {...inputProps}
+    />
+    <i className="search icon" />
+  </div>
 );
 
 export default class Search extends Component {
@@ -26,7 +31,10 @@ export default class Search extends Component {
       value: "",
       suggestions: [],
       searchResults: "",
-      results: ""
+      results: "",
+      createContent: false,
+      textbox: true,
+      showContent: false
     };
   }
   componentDidMount() {
@@ -55,7 +63,6 @@ export default class Search extends Component {
       .catch(err => {
         console.log("Error retreiving Info");
       });
-    this.displayContent();
   };
   getSuggestions(value) {
     const inputValue = value.trim().toLowerCase();
@@ -86,24 +93,37 @@ export default class Search extends Component {
 
   onSuggestionSelected = (event, { method, suggestionValue }) => {
     console.log("shah", suggestionValue);
-    this.setState({ searchValue: suggestionValue });
-    this.searchByName();
+    this.setState({
+      searchValue: suggestionValue,
+      createContent: false,
+      textbox: false,
+      showContent: true
+    });
+    // this.displayContent();;
   };
+
   displayContent = () => {
-    ReactDOM.render(<Content />, document.getElementById("content"));
+    if (this.state.showContent === true)
+      ReactDOM.render(<Content />, document.getElementById("content"));
+  };
+
+  createContent = () => {
+    this.setState({
+      createContent: true,
+      textbox: false
+    });
   };
   render() {
     const { value, suggestions } = this.state;
     const inputProps = {
-      placeholder: "Search",
+      placeholder: "Search for story",
       value,
       onChange: this.onChange
     };
     return (
-      <div>
+      <div id="frg">
         <div className="ui two column centered grid">
           <div className="column">
-            {" "}
             <Autosuggest
               suggestions={suggestions}
               renderInputComponent={renderInputComponent}
@@ -116,7 +136,59 @@ export default class Search extends Component {
             />
           </div>
         </div>
+
+        {this.state.textbox === true ? (
+          <div className="ui vertical stripe segment">
+            <div className="ui middle aligned stackable grid container">
+              <div className="row">
+                <div className="eight wide column">
+                  <h3 className="ui header">Do you have any story??</h3>
+                  <p>
+                    We can give your company superpowers to do things that they
+                    never thought possible. Let us delight your customers and
+                    empower your needs...through pure data analytics.
+                  </p>
+                  <h3 className="ui header">We Make Bananas That Can Dance</h3>
+                  <p>
+                    Yes that's right, you thought it was the stuff of dreams,
+                    but even bananas can be bioengineered.
+                  </p>
+                </div>
+                <div className="six wide right floated column">
+                  <img
+                    className="ui large bordered rounded image"
+                    src="https://ak7.picdn.net/shutterstock/videos/13351367/thumb/1.jpg"
+                    alt="book"
+                  />
+                </div>
+              </div>
+              <div className="row">
+                <div className="center aligned column">
+                  <button
+                    className="ui huge button"
+                    onClick={this.createContent}
+                  >
+                    Start creating story
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        ) : (
+          ""
+        )}
+
         <div id="content" />
+        {this.state.createContent === true ? (
+          <Content createContent={this.state.createContent} />
+        ) : (
+          ""
+        )}
+        {this.state.showContent === true ? (
+          <Content createContent={this.state.createContent} />
+        ) : (
+          ""
+        )}
       </div>
     );
   }

@@ -6,7 +6,8 @@ export default class Cards extends Component {
     super(props);
     this.state = {
       isInEditMode: false,
-      value: this.props.questions.title
+      update:false,
+      value: this.props.questions
     };
   }
 
@@ -21,50 +22,60 @@ export default class Cards extends Component {
   UpdateQuestion(event) {
     event.preventDefault();
     this.setState({
-      isInEditMode: false
+      isInEditMode: false,
+      // value: event.target.value,
+      update:true
     });
+    console.log('value2',this.state.value);
+
   }
   editText(event) {
     event.preventDefault();
     this.setState({
       value: event.target.value
     });
+    console.log('value',this.state.value);
   }
 goToBack(event){
   event.preventDefault();
   console.log('back')
   this.setState({
-    value:this.props.questions.title,
+    value:this.props.questions,
     isInEditMode:false
   })
 }
   render() {
     console.log("dad", this.state.value);
     return (
+      this.props.questions.map((ques,id) => 
       <Fragment>
         <div className="ui very padded text container">
           <Card fluid color="red" id="card">
             <Card.Content>
-              <div className="ui grid">
-                <div className="ten wide column" id="text1">
+             
                   {this.state.isInEditMode === true ? (
                     <div>
                       <input
                       className="ui input"
                         type="text"
-                        defaultValue={this.state.value}
+                        id="text1"
+                        defaultValue={ques.title}
                         onChange={this.editText.bind(this)}
                       />
-                      <button id="style" className="ui primary button" onClick={this.goToBack.bind(this)}>X</button>
+                      <button id="style" className="ui primary button" onClick={this.goToBack.bind(this)}>Cancel</button>
                       <button  className="ui primary button" onClick={this.UpdateQuestion.bind(this)}>
                         Update
                       </button>
                     </div>
-                  ) : (
-                    <Card.Header>{this.state.value}</Card.Header>
-                  )}
-                </div>
-                <div className="six wide column">
+                  ) : (<Fragment>
+                     <div className="ui grid">
+                <div className="ten wide column" id="text1">
+
+                    <Card.Header>{this.state.update === true ? (this.state.value) :(ques.title)} </Card.Header>
+                    </div>
+                
+                
+                    <div className="six wide column">
                   <div className="ui labeled icon menu">
                     <a
                       className="item"
@@ -92,12 +103,15 @@ goToBack(event){
                       <i className="arrow circle up icon" />
                     </a>
                   </div>
-                </div>
-              </div>
+                </div></div>
+                </Fragment>
+                  )}
+              
             </Card.Content>
           </Card>
         </div>
       </Fragment>
+      )
     );
   }
 }

@@ -1,6 +1,28 @@
 #text1{
     margin-top: 1rem;
+    padding-left: 0.5rem;
+    width: 34rem;
 }
 #style{
     margin-left: 0.5rem;
+}
+@media only screen and (max-width: 727px) and (min-width:599px) {
+    #text1{
+        width: 24rem;
+    }
+}
+@media only screen and (max-width: 395px) and (min-width:320px){
+    #text1{
+        width: 5rem;
+    }
+}
+@media only screen  and (max-width:349px){
+    #text1{
+        width: 5rem;
+    }
+}
+@media only screen and (max-width: 599px) and (min-width:396px){
+    #text1{
+        width: 9rem;
+    }
 }

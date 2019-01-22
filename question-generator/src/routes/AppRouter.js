@@ -2,12 +2,13 @@ import React , { Fragment}from "react";
 import {BrowserRouter , Route,Switch } from  "react-router-dom";
 import {questionPage} from '../components/questionPage';
 import App from '../App';
+import '../css/router.css';
 import Card from '../components/card'
 class AppRouter extends React.Component {
  
     render() {
         return(
-            <Fragment>
+            <Fragment >
                 <BrowserRouter>
                 <Switch>
                     <Route path = "/" component= {App} exact={true}/>

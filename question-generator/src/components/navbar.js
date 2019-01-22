@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, Menu,Divider,Dropdown,Icon} from 'semantic-ui-react';
+import { Image, Menu,Divider,Dropdown,Icon, MenuItem} from 'semantic-ui-react';
 import { Redirect } from 'react-router';
 
 class Navbar extends React.Component {
@@ -36,10 +36,11 @@ class Navbar extends React.Component {
               verticalAlign='middle' />
             <span>{(this.props.credits==null)?0:this.props.credits}</span>
           </Menu.Item>
+        
           <Menu.Item position='right' >
           <Dropdown trigger={trigger} pointing='top right' icon={null}>
           <Dropdown.Menu>
-            <Dropdown.Header>{sessionStorage.getItem("userName")}</Dropdown.Header>
+            <Dropdown.Header></Dropdown.Header>
             <Dropdown.Item onClick={this.handleSignOut}><Icon name='sign out' />Sign Out</Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>

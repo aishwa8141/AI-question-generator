@@ -8,6 +8,7 @@ export default class Content extends Component {
     this.state = {
       textareaValue: "",
       textareaLength: "",
+      storyName: "",
       enablebutton: true,
       questions: [
         { id: "fdsd", title: "Why is the sky blue?" },
@@ -15,6 +16,7 @@ export default class Content extends Component {
         { id: "afdsf", title: "Is green tea overrated?" }
       ]
     };
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   displayQuestion = () => {
@@ -29,13 +31,25 @@ export default class Content extends Component {
 
   handleOnChangeInput(e) {
     e.preventDefault();
-    this.setState({
-      textareaValue: e.target.value,
-      textareaLength: e.target.value.length
-    });
-    if (this.state.textareaLength >= 10) {
-      this.setState({ enablebutton: false });
+    if (e.target.type === "text") {
+      console.log("hi");
+      this.setState({
+        storyName: e.target.value
+      });
+    } else {
+      this.setState({
+        textareaValue: e.target.value,
+        textareaLength: e.target.value.length
+      });
+      if (this.state.textareaLength >= 10) {
+        this.setState({ enablebutton: false });
+      }
     }
+  }
+  handleSubmit(event) {
+    console.log("shajhdk");
+    alert("An essay was submitted: " + this.state.storyName);
+    event.preventDefault();
   }
 
   render() {
@@ -44,28 +58,39 @@ export default class Content extends Component {
         <Fragment>
           <div className="ui raised very padded text container segment">
             <h3 className="ui header">Create story</h3>
-            <div className="ui form">
-          <div className="field">
-              <input type="text" placeholder="Story title"/>
+            <form className="ui form" onSubmit={this.handleSubmit}>
+              <div className="field">
+                <input
+                  type="text"
+                  placeholder="Story title"
+                  onChange={this.handleOnChangeInput.bind(this)}
+                />
               </div>
               <div className="field">
-                <textarea onChange={this.handleOnChangeInput.bind(this)} placeholder="start writing story...." />
+                <textarea
+                  onChange={this.handleOnChangeInput.bind(this)}
+                  placeholder="start writing story...."
+                />
               </div>
-            </div>
-            <button
-              className="ui primary button right floated"
-              onClick={this.displayQuestion}
-              disabled={this.state.enablebutton}
-            >
-              Generate questions
-            </button>
-            <button
-              className="ui primary button right floated "
-              disabled={this.state.enablebutton}
-            >
-              save
-            </button>
-           
+              <button
+                className="ui primary button right floated"
+                onClick={this.displayQuestion}
+                disabled={this.state.enablebutton}
+              >
+                Generate questions
+              </button>
+              <button
+                type="submit"
+                value="save"
+                className="ui primary button right floated "
+                disabled={this.state.enablebutton}
+              >
+                save
+              </button>
+            </form>
+
+            {/* <input type="submit" value="save" className="ui primary button right floated "
+              disabled={this.state.enablebutton}/> */}
           </div>
 
           <div id="ques" />

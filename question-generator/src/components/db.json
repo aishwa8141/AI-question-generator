@@ -21,7 +21,11 @@
     },
     {
       "id": 2,
+<<<<<<< HEAD
       "name": "afganisthan",
+=======
+      "name": "little Red Riding Hood",
+>>>>>>> a7c8ea5db8c2f498b2b8504d9c50167ee32718ad
       "content": "lorem ipsum lorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsum",
       "questions": [
         {
@@ -59,7 +63,11 @@
     },
     {
       "id": 9,
+<<<<<<< HEAD
       "name": "africa",
+=======
+      "name": "The Bernstein Bears series",
+>>>>>>> a7c8ea5db8c2f498b2b8504d9c50167ee32718ad
       "content": "lorem ipsum lorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsum",
       "questions": [
         {
@@ -97,7 +105,7 @@
     },
     {
       "id": 7,
-      "name": "indonatio",
+      "name": "andonatio",
       "content": "lorem ipsum lorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsum",
       "questions": [
         {
@@ -162,68 +170,7 @@
       "id": 10
     },
     {
-      "name": "kamal",
-      "password": "ksfh",
-      "profile": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhmUpYYHhalvLQxph1FulRdB6yx-JLqee73jF1UM8FCE6prCve",
       "id": 11
-    },
-    {
-      "id": 12
-    },
-    {
-      "name": "kaml",
-      "password": "akns",
-      "id": 13
-    },
-    {
-      "name": "nkcn;ksd",
-      "password": "smd s,",
-      "id": 14
-    },
-    {
-      "id": 15
-    },
-    {
-      "id": 16
-    },
-    {
-      "id": 17
-    },
-    {
-      "id": 18
-    },
-    {
-      "id": 19
-    },
-    {
-      "id": 20
-    },
-    {
-      "name": "",
-      "password": "",
-      "profile": "",
-      "id": 21
-    },
-    {
-      "name": "",
-      "password": "",
-      "profile": "",
-      "id": 22
-    },
-    {
-      "id": 23
-    },
-    {
-      "name": "",
-      "password": "",
-      "profile": "",
-      "id": 24
-    },
-    {
-      "id": 25
-    },
-    {
-      "id": 26
     }
   ]
 }

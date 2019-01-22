@@ -5,14 +5,15 @@ import"../css/router.css";
 import axios from "axios";
 import Content from "./content";
 import ReactDOM from "react-dom";
+import SearchReact from "./searchreact";
 const API_URL = "http://localhost:3002/search";
 const getSuggestionValue = suggestion => suggestion.name;
 
 function renderSuggestion(suggestion) {
-  return <span>{suggestion.name}</span>;
+  return <div id="name">{suggestion.name}</div>;
 }
 const renderInputComponent = inputProps => (
-  <div className="ui fluid icon input">
+  <div className="ui fluid icon input" id="input">
     <input
       type="text"
       placeholder="Search a very wide input..."
@@ -121,7 +122,8 @@ export default class Search extends Component {
       onChange: this.onChange
     };
     return (
-      <div id="frg">
+      <div>
+        {/* <SearchReact aligned='right'></SearchReact> */}
         <div className="ui two column centered grid">
           <div className="column">
             <Autosuggest
@@ -138,7 +140,7 @@ export default class Search extends Component {
         </div>
 
         {this.state.textbox === true ? (
-          <div className="ui vertical stripe segment">
+          <div className="ui vertical stripe segment" id="create">
             <div className="ui middle aligned stackable grid container">
               <div className="row">
                 <div className="eight wide column">
@@ -148,7 +150,9 @@ export default class Search extends Component {
                     never thought possible. Let us delight your customers and
                     empower your needs...through pure data analytics.
                   </p>
-                  <h3 className="ui header">We Make Bananas That Can Dance</h3>
+                  <h3 className="ui header">
+                    Once you have written story generate questions
+                  </h3>
                   <p>
                     Yes that's right, you thought it was the stuff of dreams,
                     but even bananas can be bioengineered.
